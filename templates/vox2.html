@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>VoxCeleb2 Demo</title>
+        <meta charset="utf-8">
+        <link rel="stylesheet" href="/static/css/semantic.css" media="screen" title="no title" charset="utf-8">
+        <link rel="stylesheet" href="/static/css/jquery-ui.css" />
+        <script src="/static/js/jquery-1.9.1.js"></script>
+        <script src="/static/js/jquery-ui.js"></script>
+        <script>
+            $(function() {
+             var availableTags  = {{ all_videonames|tojson }};
+           
+             $( "#tags1" ).autocomplete({
+              source: availableTags,
+              minLength: 3,
+              max: 10,
+              matchContains: false,
+              selectFirstL: true,
+              mustMatch: true
+             });
+            });
+           </script>
+    </head>
+    <body>
+        <h1>VoxCeleb2 Demo</h1>
+        <div class="ui-widget">
+            <form method="post", action="search">
+                <label for="tags">VideoName: </label>
+                <input id="tags1" name="name" />
+                <input type="submit" value="Search">
+            </form>
+        </div>
+
+        {% if videoname!=None %}
+        <h2> {{ videoname }} </h2>
+
+        <div>
+        <video width=auto height=auto controls>
+            <source src="{{ videopath }}"  type="video/mp4">
+            您的浏览器不支持 HTML5 video 标签。
+          </video>
+        </div>
+          
+        <div>
+            {% for item in framelist%}
+            <img class="img" src="{{ item }}">
+            {% endfor %}
+        </div>
+        {% endif %}
+    </body>
+</html>
