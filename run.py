@@ -5,7 +5,7 @@ app = Flask(__name__)
 with open("pkls/datadict_vox2.pkl", "rb") as fp:
     datadict = pickle.load(fp)
 
-exp_name= [list(datadict.keys())[idx] for idx in range(0,50000,5000)]
+exp_name= [list(datadict.keys())[idx] for idx in range(0,50000,250)]
 exp_img = [datadict[_name]["frame"][0] for _name in exp_name]
 expdict=[]
 for _name, _img in zip(exp_name, exp_img):

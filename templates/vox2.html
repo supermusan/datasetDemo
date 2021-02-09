@@ -34,10 +34,10 @@
         <div><br></div><br>
         {% if videoname==None %}
             {% for item in exp%}
-            <div style="float:left">
-                <img class="img" src="{{ item.img }}">
-                <br>
-                <a href="/voxceleb2/{{ item.name.replace('#','%23') }}">{{ item.name }}</a>
+            <div class="ui tiny image" style="float:left">
+                <a href="/voxceleb2/{{ item.name.replace('#','%23') }}" class="ui tiny image">
+                    <img src="{{ item.img }}">
+                </a>
                 <br>
             </div>
             {% endfor %}
