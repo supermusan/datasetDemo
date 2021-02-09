@@ -1,2 +1,5 @@
 pkls/
 static/
+__pycache__/
+.ipynb_checkpoints/
+scripts/.ipynb_checkpoints/

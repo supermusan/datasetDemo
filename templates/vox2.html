@@ -25,12 +25,23 @@
     <body>
         <h1>VoxCeleb2 Demo</h1>
         <div class="ui-widget">
-            <form method="post", action="search">
+            <form method="GET", action="search">
                 <label for="tags">VideoName: </label>
                 <input id="tags1" name="name" />
                 <input type="submit" value="Search">
             </form>
         </div>
+        <div><br></div><br>
+        {% if videoname==None %}
+            {% for item in exp%}
+            <div style="float:left">
+                <img class="img" src="{{ item.img }}">
+                <br>
+                <a href="/voxceleb2/{{ item.name.replace('#','%23') }}">{{ item.name }}</a>
+                <br>
+            </div>
+            {% endfor %}
+        {% endif %}
 
         {% if videoname!=None %}
         <h2> {{ videoname }} </h2>
